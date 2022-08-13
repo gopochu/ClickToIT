@@ -33,8 +33,12 @@ MonoBehaviour:
   m_Title: Scene
 =======
   m_ShowMode: 4
+<<<<<<< Updated upstream
   m_Title: Game
 >>>>>>> d8f6a938fd5962b6618eb35309e4c59e0fd4d93f
+=======
+  m_Title: Scene
+>>>>>>> Stashed changes
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -80,8 +84,12 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 37
 >>>>>>> d8f6a938fd5962b6618eb35309e4c59e0fd4d93f
+=======
+  controlID: 40
+>>>>>>> Stashed changes
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -108,6 +116,7 @@ MonoBehaviour:
     y: 0
     width: 450
     height: 1051
+<<<<<<< Updated upstream
 >>>>>>> d8f6a938fd5962b6618eb35309e4c59e0fd4d93f
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
@@ -119,6 +128,10 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
 >>>>>>> 0a7790846562ba3fec67a4ce48d75157b145024c
+=======
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+>>>>>>> Stashed changes
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -342,8 +355,12 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 38
 >>>>>>> d8f6a938fd5962b6618eb35309e4c59e0fd4d93f
+=======
+  controlID: 86
+>>>>>>> Stashed changes
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -374,6 +391,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 39
 <<<<<<< HEAD
 =======
@@ -386,6 +404,9 @@ MonoBehaviour:
 >>>>>>> 0a7790846562ba3fec67a4ce48d75157b145024c
 =======
 >>>>>>> d8f6a938fd5962b6618eb35309e4c59e0fd4d93f
+=======
+  controlID: 87
+>>>>>>> Stashed changes
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -502,6 +523,7 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: 7a630000
@@ -515,6 +537,10 @@ MonoBehaviour:
 =======
     m_SelectedIDs: 00630000
     m_LastClickedID: 25344
+=======
+    m_SelectedIDs: fc620000
+    m_LastClickedID: 25340
+>>>>>>> Stashed changes
     m_ExpandedIDs: 0000000000ca9a3b
 >>>>>>> d8f6a938fd5962b6618eb35309e4c59e0fd4d93f
     m_RenameOverlay:
@@ -706,6 +732,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
       m_SelectedIDs: 487c0000
@@ -721,6 +748,11 @@ MonoBehaviour:
       m_LastClickedID: 0
       m_ExpandedIDs: 20fbffff
 >>>>>>> d8f6a938fd5962b6618eb35309e4c59e0fd4d93f
+=======
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 2cfbffff
+>>>>>>> Stashed changes
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: Button
