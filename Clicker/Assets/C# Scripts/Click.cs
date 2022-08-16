@@ -25,6 +25,14 @@ public class Click : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void ToProjects()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void ToFrelance()
+    {
+        SceneManager.LoadScene(3);
+    }
 
     void Update()
     {
