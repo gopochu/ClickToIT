@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db4a2ef93fd9274ebc6c3ab78a6aff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 0
   ClickCounter: 0
   stringText: {fileID: 0}
 --- !u!1 &494196733

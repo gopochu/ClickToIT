@@ -6,11 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class Click : MonoBehaviour
 {
+    public int money;
     [SerializeField] int ClickCounter;
     public Text stringText;
     private void Start()
     {
+        money = PlayerPrefs.GetInt("money");
         ClickCounter = PlayerPrefs.GetInt("Clicks");
+    }
+    IEnumerator IdleFarm()
+    {
+        yield return new WaitForSeconds(1);
+        money++;
+        Debug.Log(money);
+        PlayerPrefs.SetInt("money",money);
+        StartCoroutine(IdleFarm());
     }
     public void ButtonClick()
     {
