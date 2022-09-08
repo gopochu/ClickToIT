@@ -6,11 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Click : MonoBehaviour
 {
+    public int moneyForSecond;
     public int complexity;
+    public int marketing;
     public int money;
+    public int purpose;
     public bool work = false;
     [SerializeField] int ClickCounter;
-    public Text stringText;
+    public Text purposeText;
+    public Text clickText;
+    public Text moneyText;
     private void Start()
     {
         money = PlayerPrefs.GetInt("money");
@@ -19,7 +24,7 @@ public class Click : MonoBehaviour
     IEnumerator IdleFarm()
     {
         yield return new WaitForSeconds(1);
-        money++;
+        money = money + moneyForSecond;
         Debug.Log(money);
         PlayerPrefs.SetInt("money",money);
         StartCoroutine(IdleFarm());
@@ -28,6 +33,21 @@ public class Click : MonoBehaviour
     {
         ClickCounter++;
         PlayerPrefs.SetInt("Clicks", ClickCounter);
+    }
+    public void Post()
+    {
+        if (work == false)
+            marketing = 1;
+    }
+    public void Video()
+    {
+        if (work == false)
+            marketing = 2;
+    }
+    public void Stream()
+    {
+        if (work == false)
+            marketing = 3;
     }
     public void IndiProject()
     {
@@ -43,6 +63,24 @@ public class Click : MonoBehaviour
     {
         if (work == false)
             complexity = 3;
+    }
+    public void Apply()
+    {
+        ClickCounter = 0;
+        work = true;
+        if (complexity == 1)
+            ApplyIndiProject();
+    }
+    public void ApplyIndiProject()
+    {
+        purpose = 500;
+        ClickCounter = 0;
+        purposeText.text = purpose.ToString();
+        if (ClickCounter == 30)
+        {
+            work = false;
+            moneyForSecond = moneyForSecond + 5;
+        }
     }
     public void ToShop()
     {
@@ -63,6 +101,8 @@ public class Click : MonoBehaviour
 
     void Update()
     {
-        stringText.text = ClickCounter.ToString();
+        purposeText.text = purpose.ToString();
+        clickText.text = ClickCounter.ToString();
+        moneyText.text = money.ToString();
     }
 }
