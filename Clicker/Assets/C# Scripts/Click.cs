@@ -18,6 +18,7 @@ public class Click : MonoBehaviour
     public Text moneyText;
     private void Start()
     {
+        purpose = PlayerPrefs.GetInt("purpose");
         money = PlayerPrefs.GetInt("money");
         ClickCounter = PlayerPrefs.GetInt("Clicks");
     }
@@ -64,22 +65,69 @@ public class Click : MonoBehaviour
         if (work == false)
             complexity = 3;
     }
+    public void CreateProject()
+    {
+        if (complexity == 1)
+            ApplyIndiProject();
+        if (complexity == 2)
+            ApplyAAProject();
+        if (complexity == 3)
+            ApplyAAAProject();
+    }
+    public void Marketing()
+    {
+        if (marketing == 1)
+            moneyForSecond = moneyForSecond + 10;
+        if (marketing == 2)
+            moneyForSecond = moneyForSecond + 15;
+        if (marketing == 3)
+            moneyForSecond = moneyForSecond + 20;
+        PlayerPrefs.SetInt("moneyForSecond", moneyForSecond);
+    }
     public void Apply()
     {
         ClickCounter = 0;
         work = true;
-        if (complexity == 1)
-            ApplyIndiProject();
+        CreateProject();
+        Marketing();
     }
     public void ApplyIndiProject()
     {
-        purpose = 500;
+        purpose = 20;
+        PlayerPrefs.SetInt("purpose", purpose);
         ClickCounter = 0;
         purposeText.text = purpose.ToString();
-        if (ClickCounter == 30)
+        if (ClickCounter == purpose)
         {
+            purpose = 0;
+            PlayerPrefs.SetInt("purpose", purpose);
             work = false;
             moneyForSecond = moneyForSecond + 5;
+            StartCoroutine(IdleFarm());
+        }
+    }
+    public void ApplyAAProject()
+    {
+        purpose = 1000;
+        PlayerPrefs.SetInt("purpose", purpose); 
+        ClickCounter = 0;
+        purposeText.text = purpose.ToString();
+        if (ClickCounter == purpose)
+        {
+            work = false;
+            moneyForSecond = moneyForSecond + 10;
+        }
+    }
+    public void ApplyAAAProject()
+    {
+        purpose = 1500;
+        PlayerPrefs.SetInt("purpose", purpose);
+        ClickCounter = 0;
+        purposeText.text = purpose.ToString();
+        if (ClickCounter == purpose)
+        {
+            work = false;
+            moneyForSecond = moneyForSecond + 15;
         }
     }
     public void ToShop()
@@ -98,7 +146,7 @@ public class Click : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
-
+    
     void Update()
     {
         purposeText.text = purpose.ToString();
