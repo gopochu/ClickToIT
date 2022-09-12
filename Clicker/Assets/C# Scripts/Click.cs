@@ -11,7 +11,7 @@ public class Click : MonoBehaviour
     public int marketing;
     public int money;
     public int purpose;
-    public bool work = false;
+    public bool work;
     [SerializeField] int ClickCounter;
     public Text purposeText;
     public Text clickText;
@@ -21,11 +21,14 @@ public class Click : MonoBehaviour
         purpose = PlayerPrefs.GetInt("purpose");
         money = PlayerPrefs.GetInt("money");
         ClickCounter = PlayerPrefs.GetInt("Clicks");
+        Debug.Log(work);
+        PlayerPrefs.GetInt("work", (work ? 1 : 0));
     }
     public void JobCheck()
     {
         //if (work == false)
         //    ClickCounter = 0;
+        //Debug.Log(work);
     }
     IEnumerator IdleFarm()
     {
@@ -37,19 +40,28 @@ public class Click : MonoBehaviour
     }
     public void ButtonClick()
     {
-        ClickCounter++;
-        PlayerPrefs.SetInt("Clicks", ClickCounter);
+        if (work == true)
+        {
+            ClickCounter++;
+        }
+            PlayerPrefs.SetInt("Clicks", ClickCounter);
     }
     public void WorkCompletionCheck()
     {
-        if (ClickCounter == purpose && ClickCounter != 0)
+        if (purpose != 0 && ClickCounter != 0)
         {
-            purpose = 0;
-            marketing = 0;
-            PlayerPrefs.SetInt("purpose", purpose);
-            work = false;
-            moneyForSecond = moneyForSecond + 5;
-            StartCoroutine(IdleFarm());
+            if (ClickCounter == purpose)
+            {
+                purpose = 0;
+                marketing = 0;
+                ClickCounter = 0;
+                PlayerPrefs.SetInt("purpose", purpose);
+                work = false;
+                PlayerPrefs.SetInt("work", (work ? 1 : 0));
+                Debug.Log(work);
+                moneyForSecond = moneyForSecond + 5;
+                StartCoroutine(IdleFarm());
+            }
         }
     }
     public void Post()
@@ -104,6 +116,8 @@ public class Click : MonoBehaviour
     public void Apply()
     {
         work = true;
+        PlayerPrefs.SetInt("work", (work ? 1 : 0));
+        Debug.Log(work);
         CreateProject();
         Marketing();
     }
