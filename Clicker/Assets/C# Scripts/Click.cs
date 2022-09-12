@@ -22,6 +22,11 @@ public class Click : MonoBehaviour
         money = PlayerPrefs.GetInt("money");
         ClickCounter = PlayerPrefs.GetInt("Clicks");
     }
+    public void JobCheck()
+    {
+        //if (work == false)
+        //    ClickCounter = 0;
+    }
     IEnumerator IdleFarm()
     {
         yield return new WaitForSeconds(1);
@@ -34,6 +39,18 @@ public class Click : MonoBehaviour
     {
         ClickCounter++;
         PlayerPrefs.SetInt("Clicks", ClickCounter);
+    }
+    public void WorkCompletionCheck()
+    {
+        if (ClickCounter == purpose && ClickCounter != 0)
+        {
+            purpose = 0;
+            marketing = 0;
+            PlayerPrefs.SetInt("purpose", purpose);
+            work = false;
+            moneyForSecond = moneyForSecond + 5;
+            StartCoroutine(IdleFarm());
+        }
     }
     public void Post()
     {
@@ -86,7 +103,6 @@ public class Click : MonoBehaviour
     }
     public void Apply()
     {
-        ClickCounter = 0;
         work = true;
         CreateProject();
         Marketing();
@@ -95,40 +111,19 @@ public class Click : MonoBehaviour
     {
         purpose = 20;
         PlayerPrefs.SetInt("purpose", purpose);
-        ClickCounter = 0;
         purposeText.text = purpose.ToString();
-        if (ClickCounter == purpose)
-        {
-            purpose = 0;
-            PlayerPrefs.SetInt("purpose", purpose);
-            work = false;
-            moneyForSecond = moneyForSecond + 5;
-            StartCoroutine(IdleFarm());
-        }
     }
     public void ApplyAAProject()
     {
         purpose = 1000;
         PlayerPrefs.SetInt("purpose", purpose); 
-        ClickCounter = 0;
         purposeText.text = purpose.ToString();
-        if (ClickCounter == purpose)
-        {
-            work = false;
-            moneyForSecond = moneyForSecond + 10;
-        }
     }
     public void ApplyAAAProject()
     {
         purpose = 1500;
         PlayerPrefs.SetInt("purpose", purpose);
-        ClickCounter = 0;
         purposeText.text = purpose.ToString();
-        if (ClickCounter == purpose)
-        {
-            work = false;
-            moneyForSecond = moneyForSecond + 15;
-        }
     }
     public void ToShop()
     {
@@ -149,6 +144,8 @@ public class Click : MonoBehaviour
     
     void Update()
     {
+        JobCheck();
+        WorkCompletionCheck();
         purposeText.text = purpose.ToString();
         clickText.text = ClickCounter.ToString();
         moneyText.text = money.ToString();
