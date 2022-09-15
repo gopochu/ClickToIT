@@ -22,7 +22,6 @@ public class Click : MonoBehaviour
         money = PlayerPrefs.GetInt("money");
         ClickCounter = PlayerPrefs.GetInt("Clicks");
         Debug.Log(work);
-        PlayerPrefs.GetInt("work", (work ? 1 : 0));
     }
     public void JobCheck()
     {
@@ -34,7 +33,6 @@ public class Click : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         money = money + moneyForSecond;
-        Debug.Log(money);
         PlayerPrefs.SetInt("money",money);
         StartCoroutine(IdleFarm());
     }
@@ -56,8 +54,8 @@ public class Click : MonoBehaviour
                 marketing = 0;
                 ClickCounter = 0;
                 PlayerPrefs.SetInt("purpose", purpose);
+                purposeText.text = purpose.ToString();
                 work = false;
-                PlayerPrefs.SetInt("work", (work ? 1 : 0));
                 Debug.Log(work);
                 moneyForSecond = moneyForSecond + 5;
                 StartCoroutine(IdleFarm());
@@ -116,7 +114,6 @@ public class Click : MonoBehaviour
     public void Apply()
     {
         work = true;
-        PlayerPrefs.SetInt("work", (work ? 1 : 0));
         Debug.Log(work);
         CreateProject();
         Marketing();
@@ -158,10 +155,10 @@ public class Click : MonoBehaviour
     
     void Update()
     {
-        JobCheck();
+        //JobCheck();
         WorkCompletionCheck();
-        purposeText.text = purpose.ToString();
-        clickText.text = ClickCounter.ToString();
-        moneyText.text = money.ToString();
+        //purposeText.text = purpose.ToString();
+        //clickText.text = ClickCounter.ToString();
+        //moneyText.text = money.ToString();
     }
 }
