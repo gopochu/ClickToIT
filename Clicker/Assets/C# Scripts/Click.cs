@@ -6,28 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class Click : MonoBehaviour
 {
-    public int moneyForSecond;
-    public int complexity;
+    public int potentiallyEarning;
+    public int purpose = 0;
+    public Text purposeText;
     public int marketing;
+    public Text marketingText;
+    public int hard;
+    public int moneyForSecond;
     public int money;
-    public int purpose;
     public bool work;
     [SerializeField] int ClickCounter;
-    public Text purposeText;
     public Text clickText;
-    public Text moneyText;
     private void Start()
     {
         purpose = PlayerPrefs.GetInt("purpose");
         money = PlayerPrefs.GetInt("money");
         ClickCounter = PlayerPrefs.GetInt("Clicks");
         Debug.Log(work);
-    }
-    public void JobCheck()
-    {
-        //if (work == false)
-        //    ClickCounter = 0;
-        //Debug.Log(work);
     }
     IEnumerator IdleFarm()
     {
@@ -38,103 +33,110 @@ public class Click : MonoBehaviour
     }
     public void ButtonClick()
     {
-        if (work == true)
-        {
-            ClickCounter++;
-        }
-            PlayerPrefs.SetInt("Clicks", ClickCounter);
+        ClickCounter++;
+        PlayerPrefs.SetInt("ClickCounter", ClickCounter);
     }
     public void WorkCompletionCheck()
     {
-        if (purpose != 0 && ClickCounter != 0)
+        if(ClickCounter == purpose)
         {
-            if (ClickCounter == purpose)
+            work = false;
+            ClickCounter = 0;
+            purpose = 0;
+        }
+    }
+    public void Apply()
+    {
+        if (work == false)
+        {
+            if (hard != 0)
             {
-                purpose = 0;
-                marketing = 0;
-                ClickCounter = 0;
-                PlayerPrefs.SetInt("purpose", purpose);
-                purposeText.text = purpose.ToString();
-                work = false;
-                Debug.Log(work);
-                moneyForSecond = moneyForSecond + 5;
-                StartCoroutine(IdleFarm());
+                CheckHard();
+                if (marketing != 0)
+                {
+                    CheckMarketing();
+                    work = true;
+                }
             }
+        }
+    }
+    public void CheckHard()
+    {
+        if (hard == 1)
+        {
+            purpose = 20;
+            PlayerPrefs.SetInt("purpose", purpose);
+            purposeText.text = purpose.ToString();
+        }
+        else if (hard == 2)
+        {
+            purpose = 30;
+            PlayerPrefs.SetInt("purpose", purpose);
+            purposeText.text = purpose.ToString();
+        }
+        else if (hard == 3)
+        {
+            purpose = 40;
+            PlayerPrefs.SetInt("purpose", purpose);
+            purposeText.text = purpose.ToString();
+        }
+    }
+    public void CheckMarketing()
+    {
+        if(marketing == 1)
+        {
+            potentiallyEarning = 50;
+        }
+        else if(marketing == 2)
+        {
+            potentiallyEarning = 100;
+        }
+        else if(marketing == 3)
+        {
+            potentiallyEarning = 150;
+        }
+    }
+    public void Indi()
+    {
+        if(work == false)
+        {
+            purpose = 1;
+        }
+    }
+    public void AA()
+    {
+        if (work == false)
+        {
+            purpose = 2;
+        }
+    }
+    public void AAA()
+    {
+        if (work == false)
+        {
+            purpose = 3;
         }
     }
     public void Post()
     {
         if (work == false)
+        {
             marketing = 1;
+        }
     }
     public void Video()
     {
         if (work == false)
+        {
             marketing = 2;
+        }
     }
     public void Stream()
     {
         if (work == false)
+        {
             marketing = 3;
-    }
-    public void IndiProject()
-    {
-        if (work == false)
-            complexity = 1;
-    }
-    public void AAProject()
-    {
-        if (work == false)
-            complexity = 2;
-    }
-    public void AAAProject()
-    {
-        if (work == false)
-            complexity = 3;
-    }
-    public void CreateProject()
-    {
-        if (complexity == 1)
-            ApplyIndiProject();
-        if (complexity == 2)
-            ApplyAAProject();
-        if (complexity == 3)
-            ApplyAAAProject();
-    }
-    public void Marketing()
-    {
-        if (marketing == 1)
-            moneyForSecond = moneyForSecond + 10;
-        if (marketing == 2)
-            moneyForSecond = moneyForSecond + 15;
-        if (marketing == 3)
-            moneyForSecond = moneyForSecond + 20;
-        PlayerPrefs.SetInt("moneyForSecond", moneyForSecond);
-    }
-    public void Apply()
-    {
-        work = true;
-        Debug.Log(work);
-        CreateProject();
-        Marketing();
-    }
-    public void ApplyIndiProject()
-    {
-        purpose = 20;
-        PlayerPrefs.SetInt("purpose", purpose);
-        purposeText.text = purpose.ToString();
-    }
-    public void ApplyAAProject()
-    {
-        purpose = 1000;
-        PlayerPrefs.SetInt("purpose", purpose); 
-        purposeText.text = purpose.ToString();
-    }
-    public void ApplyAAAProject()
-    {
-        purpose = 1500;
-        PlayerPrefs.SetInt("purpose", purpose);
-        purposeText.text = purpose.ToString();
+        }
     }
     public void ToShop()
     {
@@ -155,10 +157,7 @@ public class Click : MonoBehaviour
     
     void Update()
     {
-        //JobCheck();
         WorkCompletionCheck();
-        //purposeText.text = purpose.ToString();
-        //clickText.text = ClickCounter.ToString();
-        //moneyText.text = money.ToString();
+        clickText.text = ClickCounter.ToString();
     }
 }
