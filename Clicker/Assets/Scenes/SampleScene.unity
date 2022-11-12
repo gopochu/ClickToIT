@@ -541,15 +541,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potentiallyEarning: 0
   purpose: 0
-  purposeText: {fileID: 0}
+  purposeText: {fileID: 240613971}
   marketing: 0
   marketingText: {fileID: 0}
   hard: 0
   moneyForSecond: 0
   money: 0
+  moneyText: {fileID: 451150008}
   work: 0
   ClickCounter: 0
-  clickText: {fileID: 0}
+  clickText: {fileID: 130650104}
 --- !u!1 &597895402
 GameObject:
   m_ObjectHideFlags: 0

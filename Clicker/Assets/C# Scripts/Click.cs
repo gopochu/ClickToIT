@@ -67,19 +67,16 @@ public class Click : MonoBehaviour
         {
             purpose = 20;
             PlayerPrefs.SetInt("purpose", purpose);
-            purposeText.text = purpose.ToString();
         }
         else if (hard == 2)
         {
             purpose = 30;
             PlayerPrefs.SetInt("purpose", purpose);
-            purposeText.text = purpose.ToString();
         }
         else if (hard == 3)
         {
             purpose = 40;
             PlayerPrefs.SetInt("purpose", purpose);
-            purposeText.text = purpose.ToString();
         }
     }
     public void CheckMarketing()
@@ -101,21 +98,21 @@ public class Click : MonoBehaviour
     {
         if (work == false)
         {
-            purpose = 1;
+            hard = 1;
         }
     }
     public void AA()
     {
         if (work == false)
         {
-            purpose = 2;
+            hard = 2;
         }
     }
     public void AAA()
     {
         if (work == false)
         {
-            purpose = 3;
+            hard = 3;
         }
     }
     public void Post()
@@ -145,5 +142,6 @@ public class Click : MonoBehaviour
     {
         WorkCompletionCheck();
         clickText.text = ClickCounter.ToString();
+        purposeText.text = purpose.ToString();
     }
 }
