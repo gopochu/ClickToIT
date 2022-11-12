@@ -380,6 +380,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239850864}
   m_CullTransparentMesh: 1
+--- !u!1 &341399577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 341399579}
+  - component: {fileID: 341399578}
+  m_Layer: 0
+  m_Name: ExitScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &341399578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341399577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db4a2ef93fd9274ebc6c3ab78a6aff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &341399579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341399577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2637643, y: 0.015350997, z: 75.721504}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361400361
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,8 +656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db4a2ef93fd9274ebc6c3ab78a6aff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClickCounter: 0
-  stringText: {fileID: 0}
 --- !u!1 &418722814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,8 +1788,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 382072236}
-          m_TargetAssemblyTypeName: Click, Assembly-CSharp
+        - m_Target: {fileID: 341399578}
+          m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
           m_MethodName: ToMainScene
           m_Mode: 1
           m_Arguments:

@@ -14,6 +14,7 @@ public class Click : MonoBehaviour
     public int hard;
     public int moneyForSecond;
     public int money;
+    public Text moneyText;
     public bool work;
     [SerializeField] int ClickCounter;
     public Text clickText;
@@ -28,7 +29,7 @@ public class Click : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         money = money + moneyForSecond;
-        PlayerPrefs.SetInt("money",money);
+        PlayerPrefs.SetInt("money", money);
         StartCoroutine(IdleFarm());
     }
     public void ButtonClick()
@@ -38,7 +39,7 @@ public class Click : MonoBehaviour
     }
     public void WorkCompletionCheck()
     {
-        if(ClickCounter == purpose)
+        if (ClickCounter == purpose)
         {
             work = false;
             ClickCounter = 0;
@@ -83,22 +84,22 @@ public class Click : MonoBehaviour
     }
     public void CheckMarketing()
     {
-        if(marketing == 1)
+        if (marketing == 1)
         {
             potentiallyEarning = 50;
         }
-        else if(marketing == 2)
+        else if (marketing == 2)
         {
             potentiallyEarning = 100;
         }
-        else if(marketing == 3)
+        else if (marketing == 3)
         {
             potentiallyEarning = 150;
         }
     }
     public void Indi()
     {
-        if(work == false)
+        if (work == false)
         {
             purpose = 1;
         }
@@ -138,23 +139,8 @@ public class Click : MonoBehaviour
             marketing = 3;
         }
     }
-    public void ToShop()
-    {
-        SceneManager.LoadScene(1);
-    }
-    public void ToMainScene()
-    {
-        SceneManager.LoadScene(0);
-    }
-    public void ToProjects()
-    {
-        SceneManager.LoadScene(2);
-    }
-    public void ToFrelance()
-    {
-        SceneManager.LoadScene(3);
-    }
-    
+
+
     void Update()
     {
         WorkCompletionCheck();
