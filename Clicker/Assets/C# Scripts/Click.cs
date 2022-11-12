@@ -25,6 +25,15 @@ public class Click : MonoBehaviour
         ClickCounter = PlayerPrefs.GetInt("Clicks");
         Debug.Log(work);
     }
+    void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("NoReboot");
+
+        if (objs.Length > 1)
+            Destroy(this.gameObject);
+
+        DontDestroyOnLoad(this.gameObject);
+    }
     IEnumerator IdleFarm()
     {
         yield return new WaitForSeconds(1);
@@ -34,7 +43,10 @@ public class Click : MonoBehaviour
     }
     public void ButtonClick()
     {
-        ClickCounter++;
+        if (work)
+        {
+            ClickCounter++;
+        }
         PlayerPrefs.SetInt("ClickCounter", ClickCounter);
     }
     public void WorkCompletionCheck()
@@ -143,5 +155,7 @@ public class Click : MonoBehaviour
         WorkCompletionCheck();
         clickText.text = ClickCounter.ToString();
         purposeText.text = purpose.ToString();
+        Awake();
+        Debug.Log(work);
     }
 }
